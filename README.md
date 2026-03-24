@@ -19,21 +19,21 @@ Responsible for data retrieval from various sources.
 
 ### 3. Presentation Layer
 The UI and State Management layer.
-- **State Management:** (e.g., BLoC, Riverpod, or Provider).
+- **State Management:** (  Riverpod, ).
 - **UI Widgets & Pages:** Pure Flutter widgets that observe the state.
 
 ## 🚀 Key Features
 - **Decoupling:** Business logic is isolated from the UI and Framework.
-- **Dependency Injection:** Using `get_it` or `riverpod` for managing dependencies.
+- **Dependency Injection:** Using  `riverpod` for managing dependencies.
 - **Error Handling:** Centralized failure handling using the `Either` type (Dartz).
 - **Testability:** Each layer can be unit tested independently.
 
 ## 🛠️ Tech Stack
 - **Framework:** [Flutter](https://flutter.dev)
-- **State Management:** [Mention your choice, e.g., Bloc/Riverpod]
-- **Networking:** [e.g., Dio or Http]
-- **Functional Programming:** [e.g., Dartz]
-- **Service Locator:** [e.g., Get_it]
+- **State Management:** [Riverpod]
+- **Networking:** [ Dio or Http]
+- **Functional Programming:** [ Dartz]
+- **Service Locator:** [ Get_it]
 
 ## 📂 Folder Structure
 ```text

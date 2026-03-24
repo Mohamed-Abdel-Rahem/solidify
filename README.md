@@ -1,17 +1,47 @@
-# clean_arch
+# Architect - Flutter Clean Architecture Project
 
-A new Flutter project.
+## 📌 Overview
+This project is a practical implementation of **Clean Architecture** in Flutter. The main goal is to showcase how to build a scalable and maintainable mobile application by separating the code into independent layers.
 
-## Getting Started
+## 🏗️ Architecture Layers
 
-This project is a starting point for a Flutter application.
+### 1. Domain Layer (Core)
+The inner-most layer, containing the "Heart" of the application.
+- **Entities:** Simple business objects.
+- **Use Cases:** Application-specific business rules.
+- **Repository Interfaces:** Contracts for data operations.
 
-A few resources to get you started if this is your first Flutter project:
+### 2. Data Layer
+Responsible for data retrieval from various sources.
+- **Models:** Data transfer objects (JSON conversion).
+- **Repositories Implementation:** Implementing the contracts from the Domain layer.
+- **Data Sources:** Remote (APIs) and Local (Databases/Caches).
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### 3. Presentation Layer
+The UI and State Management layer.
+- **State Management:** (e.g., BLoC, Riverpod, or Provider).
+- **UI Widgets & Pages:** Pure Flutter widgets that observe the state.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Key Features
+- **Decoupling:** Business logic is isolated from the UI and Framework.
+- **Dependency Injection:** Using `get_it` or `riverpod` for managing dependencies.
+- **Error Handling:** Centralized failure handling using the `Either` type (Dartz).
+- **Testability:** Each layer can be unit tested independently.
+
+## 🛠️ Tech Stack
+- **Framework:** [Flutter](https://flutter.dev)
+- **State Management:** [Mention your choice, e.g., Bloc/Riverpod]
+- **Networking:** [e.g., Dio or Http]
+- **Functional Programming:** [e.g., Dartz]
+- **Service Locator:** [e.g., Get_it]
+
+## 📂 Folder Structure
+```text
+lib/
+ ├── core/              # Shared utilities and base classes
+ ├── features/
+ │   └── feature_name/
+ │       ├── data/      # Models, Repositories, Data Sources
+ │       ├── domain/    # Entities, Use Cases, Repository Interfaces
+ │       └── presentation/ # UI and State Management
+ └── main.dart

@@ -14,4 +14,5 @@ class AdressEntity {
     required this.zipcode,
     required this.geo,
   });
+  
 }

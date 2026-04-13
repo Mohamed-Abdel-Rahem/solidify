@@ -8,6 +8,36 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoints.baseUrl;
+    dio.options.headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    };
+    dio.interceptors.add(
+      LogInterceptor(
+        request: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: true,
+        error: true,
+      ),
+    );
+  }
+  @override
+  Future<dynamic> get(
+    String path, {
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      final response = await dio.get(
+        path,
+        queryParameters: queryParameters,
+        data: data,
+      );
+      return response.data;
+    } on DioException catch (e) {
+      handleDioException(e);
+    }
   }
 
   @override
@@ -22,24 +52,6 @@ class DioConsumer extends ApiConsumer {
         path,
         data: isFormData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,
-      );
-      return response.data;
-    } on DioException catch (e) {
-      handleDioException(e);
-    }
-  }
-
-  @override
-  Future<dynamic> get(
-    String path, {
-    Object? data,
-    Map<String, dynamic>? queryParameters,
-  }) async {
-    try {
-      final response = await dio.get(
-        path,
-        queryParameters: queryParameters,
-        data: data,
       );
       return response.data;
     } on DioException catch (e) {
